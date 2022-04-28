@@ -95,33 +95,40 @@ const Buttons = () => {
 
     return(
     <>
-    <div className="result-div">
-        <div className="previous-state">{previousValue}</div>
-        <div className="current-state">{currValue}</div>
+    <div className="result-div  w-[460px] h-[110px] p-4 bg-violet-100 m-1 rounded">
+        <div className="previous-state text-2xl text-gray-600">{previousValue}</div>
+        <div className="current-state text-5xl text-gray-800">{currValue}</div>
     </div>
-    <div>
-        <button onClick={add1}>1</button>
-        <button onClick={add2}>2</button>
-        <button onClick={add3}>3</button>
-        <button onClick={add4}>4</button>
-        <button onClick={add5}>5</button>
-        <button onClick={add6}>6</button>
-        <button onClick={add7}>7</button>
-        <button onClick={add8}>8</button>
-        <button onClick={add9}>9</button>
-        <button onClick={add0}>0</button>
-        <button onClick={addOperator}>+</button>
-        <button onClick={subtractOperator}>-</button>
-        <button onClick={multiplyOperator}>*</button>
-        <button onClick={divideOperator}>/</button>
-        <button onClick={clearAllHandler}>C</button>
-        <button onClick={clearOnceHandler}>
-            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+
+    <div className="grid grid-cols-4 grid-rows-5 gap-1 text-gray-900 ">
+
+        <button onClick={clearAllHandler} className='bg-purple-300 rounded'>C</button>
+
+        <button onClick={clearOnceHandler} className='col-span-2 bg-purple-300 rounded'>
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-10 w-10 mx-auto text-gray-800" viewBox="0 0 20 20" fill="currentColor">
                 <path fillRule="evenodd" d="M9.707 14.707a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 1.414L7.414 9H15a1 1 0 110 2H7.414l2.293 2.293a1 1 0 010 1.414z" clipRule="evenodd" />
             </svg>
         </button>
-        <button onClick={result}>=</button>
+        <button onClick={result} className='row-span-2 bg-purple-300 w-28 h-36 rounded'>=</button>
+        
+        <button onClick={add1} className='bg-purple-300 rounded'>1</button>
+        <button onClick={add2} className='bg-purple-300 rounded'>2</button>
+        <button onClick={add3} className='bg-purple-300 rounded'>3</button>
 
+        <button onClick={add4} className='bg-purple-300 rounded'>4</button>
+        <button onClick={add5} className='bg-purple-300 rounded'>5</button>
+        <button onClick={add6} className='bg-purple-300 rounded'>6</button>
+        <button onClick={subtractOperator} className='bg-purple-300 rounded'>-</button>
+
+        <button onClick={add7} className='bg-purple-300 rounded'>7</button>
+        <button onClick={add8} className='bg-purple-300 rounded'>8</button>
+        <button onClick={add9} className='bg-purple-300 rounded'>9</button>
+        <button onClick={multiplyOperator} className='bg-purple-300 rounded'>*</button>
+
+        <button onClick={add0} className='col-span-2 bg-purple-300 rounded'>0</button>
+        <button onClick={addOperator} className='bg-purple-300 rounded'>+</button>      
+        <button onClick={divideOperator} className='bg-purple-300 rounded'>/</button>
+        
     </div>
         
     </>
