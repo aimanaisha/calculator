@@ -1,10 +1,10 @@
-import Buttons from './Buttons';
+import Calculator from './Calculator';
 import './App.css';
 
 function App() {
   return (
     <div className="App">
-      <Buttons/>
+      <Calculator/>
     </div>
   );
 }

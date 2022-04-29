@@ -1,6 +1,9 @@
 .App {
   text-align: center;
-  background-color: #282c34;
+  background-image: url('./assets/bg.jpg');
+  background-position: center;
+  background-size: cover;
+  background-attachment: fixed;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -11,3 +14,4 @@
   
 }
 
+/* background-color: #282c34; */
