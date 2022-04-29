@@ -11,6 +11,13 @@ const reducerFn = (latestState, action) => {
 
     if(action.type==='ADD_NO'){
 
+        if(latestState.currValue.length === 22){
+            return{
+                ...latestState,
+                currValue: latestState.currValue
+            }
+        }
+
         if(latestState.currValue === '0'){
             if(action.value === '.'){
                 return {
@@ -62,28 +69,28 @@ const reducerFn = (latestState, action) => {
 
             if(action.operator === '+'){
                 return {
-                    currValue: num1 + num2,
+                    currValue: (num1 + num2).toString(),
                     previousValue: action.currValue,
                     operator: ''
                 }
             }
             if(action.operator === '-'){
                 return {
-                    currValue: num1 - num2,
+                    currValue: (num1 - num2).toString(),
                     previousValue: action.currValue,
                     operator: ''
                 }
             }
             if(action.operator === '*'){
                 return {
-                    currValue: num1 * num2,
+                    currValue: (num1 * num2).toString(),
                     previousValue: action.currValue,
                     operator: ''
                 }
             }
             if(action.operator === '/'){
                 return {
-                    currValue: num1 / num2,
+                    currValue: (num1 / num2).toString(),
                     previousValue: action.currValue,
                     operator: ''
                 }
@@ -165,11 +172,13 @@ const Calculator = () => {
         dispatchActionFn({type: 'CLEAR_ONCE'})
     }
 
+    const resultClass = `${currValue.length >= 14 ? 'text-3xl text-[#180138]' : 'text-5xl text-[#180138]'}`
+
     return(
     <>
         <div className="result-div p-4 pt-5 bg-[#d62290] m-1 rounded-sm w-[450px] h-[150px] border border-[1.5px] border-[#180138]">
-            <div className="previous-state text-2xl text-[#2e1a55] mb-3">{previousValue}<span>{operator}</span></div>
-            <div className="current-state text-5xl text-[#180138]">{currValue}</div>
+            <div className="text-2xl text-[#2e1a55] mb-3">{previousValue}<span>{operator}</span></div>
+            <div className={resultClass}>{currValue}</div>
         </div>
 
         <div className="grid grid-cols-4 grid-rows-5 gap-1 w-[450px] h-[430px] text-[#f40f90] ">
