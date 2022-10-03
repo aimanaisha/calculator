@@ -18,18 +18,10 @@ const reducerFn = (latestState, action) => {
             }
         }
 
-        if(latestState.currValue === '0'){
-            if(action.value === '.'){
-                return {
-                    ...latestState,
-                    currValue: latestState.currValue + action.value
-                }
-            }
-            else{
-                return {
-                ...latestState,
-                currValue: action.value
-                }
+        if(latestState.currValue === '0' && action.value !== '.'){
+            return {
+            ...latestState,
+            currValue: action.value
             }
         }
         else{
@@ -62,39 +54,35 @@ const reducerFn = (latestState, action) => {
     }
     if(action.type === 'RESULT'){
 
-        if(action.currValue !== '0' && action.previousValue !== '' & action.operator !== ''){
+        if(action.currValue !== '0' && action.previousValue !== '' && action.operator !== ''){
 
             let num1 = +action.previousValue
             let num2 = +action.currValue
 
-            if(action.operator === '+'){
-                return {
-                    currValue: (num1 + num2).toString(),
-                    previousValue: action.currValue,
-                    operator: ''
-                }
+            const operator = '', previousValue = action.currValue;
+            var currValue;
+
+            switch (action.operator) {
+                case '+':
+                    currValue  = num1 + num2;
+                    break;
+                case '-':
+                    currValue = num1 - num2;
+                    break;
+                case '*':
+                    currValue  = num1 * num2;
+                    break;
+                case '/':
+                    currValue = num1 / num2;
+                    break;
+            
+                default:
+                    break;
             }
-            if(action.operator === '-'){
-                return {
-                    currValue: (num1 - num2).toString(),
-                    previousValue: action.currValue,
-                    operator: ''
-                }
+            return {
+                operator, previousValue, currValue: currValue.toString()
             }
-            if(action.operator === '*'){
-                return {
-                    currValue: (num1 * num2).toString(),
-                    previousValue: action.currValue,
-                    operator: ''
-                }
-            }
-            if(action.operator === '/'){
-                return {
-                    currValue: (num1 / num2).toString(),
-                    previousValue: action.currValue,
-                    operator: ''
-                }
-            }
+                
         }
         else{
             return {...latestState}
@@ -111,17 +99,9 @@ const reducerFn = (latestState, action) => {
     if(action.type === 'CLEAR_ONCE'){
 
         let currString = latestState.currValue.toString()
-        if(latestState.currValue.length === 1){
-            return{
-                ...latestState,
-                currValue: '0'
-            }
-        }
-        else{
-            return{
+        return{
             ...latestState,
-            currValue: currString.slice(0, currString.length - 1)
-            }
+            currValue: latestState.currValue.length === 1 ? '0' : currString.slice(0, currString.length - 1)
         }
     }
 }
